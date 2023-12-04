@@ -70,7 +70,6 @@ function initAutocomplete() {
   locationInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       e.preventDefault(); // Prevent the form from press enter      
-      start();
     };
   })
 }
@@ -236,9 +235,6 @@ locationInput.addEventListener('dblclick',() => {
   locationInput.value = '';
 });
 
-function start() {
-  searchButton.addEventListener('click', getAutocompletePlace);
-  document.addEventListener('keypress', (event => event.key === 'Enter' && getAutocompletePlace()));
-}
-
+searchButton.addEventListener('click', getAutocompletePlace);
+document.addEventListener('keypress', (event => event.key === 'Enter' && getAutocompletePlace()));
 currentLocationButton.addEventListener('click', getCurrentCoordinates);
