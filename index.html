@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast Project</title>
+  <link href="weather.css" rel="stylesheet">
+</head>
+<body>
+  <header><h1>Weather forecast Project</h1></header>  
+
+  <main>
+    <section class="main-section">
+      <form action="check.html" method="GET" id="input-section" onSubmit="return false;">
+        <label for="location-input">Enter a City Name :</label>
+        <input type="text" id="location-input" name="location-input" placeholder="E.g., Vaasa, Turku" required>
+        <button type="button" id="current-location"><img src="./img/current-location.png" id="current-location-icon"></button>
+        <input type="button" id="search-btn" value="Search">
+      </form>
+
+      <h3 class="popup" id="popup-alert"></h3>
+      <br>
+
+      <p id="location-info">Helsinki - Finland</p>
+      <br>
+      <section class="today-section">
+        <section class="current-data">
+          <section id="current-data-1">
+            <!-- <h3>date</h3>
+            <p id="current-temp">&deg;C</p>
+            <p id="realfeel">Real feel &deg;C</p>
+            <h5 class="weather-description"></h5>
+            <img src="" alt="big icon">    -->
+          </section> 
+
+          <section id="current-data-2">
+            <!-- <h3>MORE DETAILS</h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <h5>Sunrise  &nbsp; &nbsp; Sunset </h5>
+            <h5></h5> -->
+          </section>
+        </section>
+
+        <section id="hours-forecast-section"> 
+          <section id="background-hour-cards"></section>
+          <ul id="hours-forecast-list">
+            <li class="hourly-card">
+              <!-- <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3> -->
+            </li>   
+            <!-- <li class="hourly-card">
+              <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3>
+            </li>
+            <li class="hourly-card">
+              <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3>
+            </li>
+            <li class="hourly-card">
+              <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3>
+            </li>
+            <li class="hourly-card">
+              <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3>
+            </li>
+            <li class="hourly-card">
+              <h3></h3>
+              <img src="" alt="weather-icon">
+              <h3>&deg;C</h3>
+            </li> -->
+          </ul>        
+        </section>
+      </section> 
+
+      <h2 id="seven-days-label">&nbsp;7-days Forecast Weather</h2>
+      <hr>
+      <section>    
+        <ul id="days-forecast-list">
+          <li class="daily-card">
+            <!-- <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5> -->
+          </li>
+          <!-- <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li>
+          <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li>
+          <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li>
+          <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li>
+          <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li>
+          <li class="daily-card">
+            <h2></h2>
+            <h5></h5>
+            <h5>Min temp &degC</h5>
+            <h5>Max temp &degC</h5>
+            <h5>Humidity %</h5>
+            <img src="" alt="weather icon">
+            <h5>Sunrise  &nbsp Sunset </h5>
+          </li> -->
+        </ul>
+      </section>
+    </section>
+  </main>
+  
+  <footer>Vaasa University of Applied Sciences - IT2023B<br>Made by Nguyen Nguyen - Nguyen Lien</footer>
+  
+  <script src="weather-forecast.js"></script>
+
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzCttu5tmEli8uVqpG0_X68ag5i0WSLPM&libraries=places&callback=initAutocomplete" async defer>
+</script>
+
+</body>
+</html>
