@@ -231,8 +231,8 @@ function showError(errorMessage) {
 
 getWeatherData(lat, lon);// Set default weather forecast for Helsinki area
 
-// Clear previous suggestions
-locationInput.addEventListener('click',() => {
+// Double click to clear previous suggestions
+locationInput.addEventListener('dblclick',() => {
   locationInput.value = '';
 });
 
