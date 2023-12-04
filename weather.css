@@ -67,6 +67,7 @@ h1 {
 
 h2 {
   font-size: 20px;  
+  text-align: left;
 }
 
 h5 {
@@ -108,10 +109,11 @@ button {
   display: inline-block;
 }
 
-input#location-input {
+#location-input {
   font-size: 16px;
   padding-left: 5px;
-  width: 270px;
+  margin-right: 50px;
+  width: 220px;
   text-align: left;
 }
 
@@ -218,6 +220,7 @@ p#location-info {
 
 #current-data-2 {
   width: 250px;
+  text-align: left;
 }
 
 #current-temp {
