@@ -19,6 +19,7 @@
   line-height: 1.5;
   color: black;
   font-weight: 500;
+  text-align: center;
 }
 
 body {
@@ -26,16 +27,17 @@ body {
 }
 
 header {
-  height: 50px;
+  min-height: 50px;
   background-color: chocolate;
-  padding-top: 5px;
-  position: fixed;
+  top: 0;
+  position: sticky;
   z-index: 1;
   width: 100%;
+  overflow: visible;
 }
 
 footer {
-  height: 50px;
+  min-height: 50px;
   text-align: center;
   color: bisque;
   background-color: rgb(14, 14, 61);
@@ -44,7 +46,7 @@ footer {
 }
 
 main {
-  top: 50px;
+  padding-top: 10px;
   position: relative;
   min-height: calc(100vh - 50px);
 }
@@ -53,6 +55,7 @@ main::before {
   content: ' ';
   display: block;
   position:absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   opacity: 0.6;
@@ -82,13 +85,6 @@ li {
 }
 
 /* Input section */
-#input-section {
-  text-align: center;
-  display: inline-block;
-  min-height: 80px;
-  width: 100%;
-}
-
 label, input, button {
   font-size: 20px;  
   margin: 10px 0;
@@ -98,26 +94,23 @@ label, input, button {
   vertical-align: middle;
 }
 
+#input-section {
+  text-align: center;
+  min-height: 80px;
+  width: 100%;
+}
+
+.contain-input {
+  position: relative;
+  display: inline-block;
+}
+
 input#location-input {
   font-size: 16px;
   padding-right: 0;
   padding-left: 5px;
-  width: 220px;
-}
-
-#search-btn {
-  width: 150px;
-  background-color: rgb(250, 234, 87);
-  color: darkblue;
-  margin-left: 20px;
-}
-
-#search-btn:hover {
-  background-color: darkgoldenrod;
-}
-
-#search-btn:active { 
-  background: darkkhaki;  
+  width: 270px;
+  text-align: left;
 }
 
 #current-location-icon {
@@ -129,12 +122,29 @@ input#location-input {
 button#current-location {
   background-color: rgb(250, 234, 87);
   width: 50px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 button#current-location:hover {
   background-color: darkgoldenrod;
 }
 
 button#current-location:active { 
+  background: darkkhaki;  
+}
+
+#search-btn {
+  width: 150px;
+  background-color: rgb(250, 234, 87);
+  color: darkblue;
+}
+
+#search-btn:hover {
+  background-color: darkgoldenrod;
+}
+
+#search-btn:active { 
   background: darkkhaki;  
 }
 

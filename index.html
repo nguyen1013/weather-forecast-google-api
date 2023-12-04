@@ -7,14 +7,16 @@
   <link href="weather.css" rel="stylesheet">
 </head>
 <body>
-  <header><h1>Weather forecast Project</h1></header>  
+  <header><h1>Weather forecast Project</h1></header> 
 
   <main>
     <section class="main-section">
       <form action="check.html" method="GET" id="input-section" onSubmit="return false;">
-        <label for="location-input">Enter a City Name :</label>
-        <input type="text" id="location-input" name="location-input" placeholder="E.g., Vaasa, Turku" required>
-        <button type="button" id="current-location"><img src="./img/current-location.png" id="current-location-icon"></button>
+        <label for="location-input">Enter a City Name :</label>   
+        <div class="contain-input">               
+          <input type="text" id="location-input" name="location-input" placeholder="E.g., Vaasa, Turku" required>
+          <button type="button" id="current-location"><img src="./img/current-location.png" id="current-location-icon"></button>
+        </div>
         <input type="button" id="search-btn" value="Search">
       </form>
 
