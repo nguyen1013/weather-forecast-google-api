@@ -181,8 +181,8 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
   }
   currentData1.innerHTML = `
     <h3>${days[0]}</h3>
-    <p id="current-temp">${currentTemp} &deg;C</p>
-    <p id="realfeel">Real feel ${feelLike} &deg;C</p>
+    <h5 id="current-temp">${currentTemp} &deg;C</h5>
+    <h5 id="realfeel">Real feel ${feelLike} &deg;C</h5>
     <h5 class="weather-description">${description[0].toUpperCase() + description.slice(1)}</h5>
     <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="big icon">    
   `; 

@@ -20,6 +20,7 @@
   color: black;
   font-weight: 500;
   text-align: center;
+  position: relative;
 }
 
 body {
@@ -38,7 +39,6 @@ header {
 
 footer {
   min-height: 50px;
-  text-align: center;
   color: bisque;
   background-color: rgb(14, 14, 61);
   position: absolute;
@@ -46,16 +46,14 @@ footer {
 }
 
 main {
-  padding-top: 10px;
-  position: relative;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 100px);
 }
 
 main::before {
-  content: ' ';
+  content: '';
   display: block;
-  position:absolute;
-  top: 0;
+  position: absolute;
+  /* top: 0; */
   width: 100%;
   height: 100%;
   opacity: 0.6;
@@ -63,12 +61,7 @@ main::before {
   background-size: cover;
 }
 
-.main-section {
-  position: relative;
-}
-
 h1 {
-  text-align: center;
   font-size: 30px;
 }
 
@@ -78,36 +71,45 @@ h2 {
 
 h5 {
   font-size: 16px;
+  text-align: left;
 }
 
 li {
   list-style: none;  
 }
 
-/* Input section */
-label, input, button {
-  font-size: 20px;  
-  margin: 10px 0;
-  height: 50px;
-  border: none;
-  position: relative;
-  vertical-align: middle;
+ul, 
+.main-showing, 
+.current-data, 
+.today-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
+label, 
+input, 
+button {
+  font-size: 20px;  
+  margin: 10px auto;
+  height: 50px;
+  border: none;
+  vertical-align: middle;
+  border-radius: 0;
+}
+
+/* Input section */
 #input-section {
-  text-align: center;
   min-height: 80px;
   width: 100%;
 }
 
 .contain-input {
-  position: relative;
   display: inline-block;
 }
 
 input#location-input {
   font-size: 16px;
-  padding-right: 0;
   padding-left: 5px;
   width: 270px;
   text-align: left;
@@ -138,6 +140,7 @@ button#current-location:active {
   width: 150px;
   background-color: rgb(250, 234, 87);
   color: darkblue;
+  margin-left: 10px;
 }
 
 #search-btn:hover {
@@ -157,7 +160,6 @@ button#current-location:hover::after {
   justify-content: center;
   right: -50px;
   top: 52px;
-  border: #000;
   z-index: 1;
   font-size: 16px;
   width: 180px;
@@ -174,7 +176,6 @@ button#current-location:hover::after {
   display: none;
   position:fixed;
   top: 15%;
-  /* left: 45vw; */
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Tahoma, sans-serif;
@@ -199,9 +200,8 @@ button#current-location:hover::after {
 /* Display city and country */
 p#location-info {
   font-size: 30px;
-  miheight: 60px;
+  min-height: 60px;
   width: 100%;
-  text-align: center;
 }
 
 /* Display today's weather */
@@ -210,13 +210,8 @@ p#location-info {
   margin: 10px auto;
 }
 
-ul, .main-showing, .current-data, .today-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-#current-data-1, #current-data-2 {
+#current-data-1, 
+#current-data-2 {
   height: 250px; 
   margin: auto 20px;
 }
@@ -231,7 +226,6 @@ ul, .main-showing, .current-data, .today-section {
 
 /* 3 hours forecast */
 #hours-forecast-section {
-  position: relative;
   margin-top: 0;
 }
 
@@ -246,7 +240,6 @@ ul, .main-showing, .current-data, .today-section {
 }
 
 li.hourly-card {
-  text-align: center;
   margin-bottom: 10px;
   width: 150px;  
 }
@@ -254,7 +247,6 @@ li.hourly-card {
 #hours-forecast-list {
   min-height: 230px; 
   padding: 10px 0;
-  position: relative;
   font-size: 18px;
 }
 
