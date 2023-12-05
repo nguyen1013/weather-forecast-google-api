@@ -117,6 +117,11 @@ button {
   text-align: left;
 }
 
+#location-input:hover, 
+#location-input:focus {
+  background-color: rgba(245, 245, 245, 0.863);
+}
+
 #current-location-icon {
   height: 30px;
   width: auto;  
@@ -129,27 +134,13 @@ button#current-location {
   position: absolute;
   right: 0;
   top: 0;
+  cursor:pointer;
 }
 button#current-location:hover {
   background-color: darkgoldenrod;
 }
 
 button#current-location:active { 
-  background: darkkhaki;  
-}
-
-#search-btn {
-  width: 150px;
-  background-color: rgb(250, 234, 87);
-  color: darkblue;
-  margin-left: 10px;
-}
-
-#search-btn:hover {
-  background-color: darkgoldenrod;
-}
-
-#search-btn:active { 
   background: darkkhaki;  
 }
 
@@ -168,9 +159,20 @@ button#current-location:hover::after {
   border: 5px;
 }
 
-#location-input:hover, 
-#location-input:focus {
-  background-color: rgba(245, 245, 245, 0.863);
+#search-btn {
+  width: 150px;
+  background-color: rgb(250, 234, 87);
+  color: darkblue;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: darkgoldenrod;
+}
+
+#search-btn:active { 
+  background: darkkhaki;  
 }
 
 /* Pop-up failed to get coordinates */
