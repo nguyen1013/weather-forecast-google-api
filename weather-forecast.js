@@ -186,7 +186,7 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
     <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="big icon">    
   `; 
   currentData2.innerHTML = `
-    <h3">MORE DETAILS</h3>
+    <h3>MORE DETAILS</h3>
     <h5>Min temp ${minTemp}&degC</h5>
     <h5>Max temp ${maxTemp}&degC</h5>
     <h5>Humidity ${humidity}%</h5>

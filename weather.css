@@ -75,6 +75,10 @@ h5 {
   text-align: left;
 }
 
+#current-data-2 h3 {
+  text-align: left;
+}
+
 li {
   list-style: none;  
 }
@@ -95,14 +99,14 @@ button {
   margin: 10px auto;
   height: 50px;
   border: none;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   border-radius: 0;
 }
 
 /* Input section */
 #input-section {
   min-height: 80px;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .contain-input {
@@ -130,6 +134,9 @@ button {
 
 button#current-location {
   background-color: rgb(250, 234, 87);
+  border: 2px solid rgb(226, 211, 78);
+  border-radius: 5px;
+  box-shadow: 0px 3px darkgoldenrod;
   width: 50px;
   position: absolute;
   right: 0;
@@ -137,11 +144,17 @@ button#current-location {
   cursor:pointer;
 }
 button#current-location:hover {
-  background-color: darkgoldenrod;
+  background-color: rgb(228, 167, 15);
+  transition: background-color .15s;
+  border: darkgoldenrod;
 }
 
 button#current-location:active { 
   background: darkkhaki;  
+  transition: background-color .15s;
+  margin-top: 13px;
+  box-shadow: 0 0;
+  opacity: 0.6;
 }
 
 /* Tooltip */
@@ -161,18 +174,33 @@ button#current-location:hover::after {
 
 #search-btn {
   width: 150px;
-  background-color: rgb(250, 234, 87);
-  color: darkblue;
   margin-left: 10px;
   cursor: pointer;
+  background-color: rgb(250, 234, 87);
+  color: darkblue;
+  border: 2px solid rgb(226, 211, 78);
+  font-size: 18px;
+  box-shadow: 0px 3px darkgoldenrod;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  bottom: 1px;
 }
 
 #search-btn:hover {
-  background-color: darkgoldenrod;
+  background-color: rgb(228, 167, 15);
+  transition: background-color .15s, font-size .15s;
+  font-size: 19px;
+  border: darkgoldenrod;
 }
 
 #search-btn:active { 
   background: darkkhaki;  
+  font-size: 18px;
+  border-color: rgb(156, 116, 15);
+  box-shadow: 0 0;
+  opacity: 0.6;
+  bottom: -2px;
 }
 
 /* Pop-up failed to get coordinates */
