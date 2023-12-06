@@ -69,28 +69,44 @@ function initAutocomplete() {
 
   locationInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent the form from press enter      
+      e.preventDefault(); // Prevent the form from press enter   
+      getAutocompletePlace();   
     };
   })
 }
 
 function getAutocompletePlace() {
+  try {
+    let place = autocomplete.getPlace();
+    fullLocationName = place.formatted_address;
+    area = place.name;
+    lat = place.geometry.location.lat();
+    lon = place.geometry.location.lng();       
+    getWeatherData(lat, lon);
+
+  } 
+  catch(error) {
+    getCoordinates();
+  } 
+}
+
+function getCoordinates() {
   if (locationInput.value) {
-    try {
-      let place = autocomplete.getPlace();
-      fullLocationName = place.formatted_address;
-      area = place.name;
-      lat = place.geometry.location.lat();
-      lon = place.geometry.location.lng();       
-      getWeatherData(lat, lon);
-      // console.log(fullLocationName)
-      // console.log(place)
-    } 
-    catch(error) {
-      showError(`No coordinates found for ${locationInput.value}`);
-    } 
-  } else {
-    showError(`Please input location first`);
+    const locationName = locationInput.value.trim();
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${locationName}&limit=5&appid=${APIkey}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.length === 0) {          
+          showError(`No coordinates found for <b>${locationName}</b>`); 
+        } else {        
+        lat = data[0].lat;
+        lon = data[0].lon;
+        country = regionNames.of(data[0].country);
+        area = data[0].name;
+        fullLocationName = area + ', ' + country;
+        getWeatherData(lat, lon);
+        };
+      });   
   }
 }
 
@@ -108,8 +124,9 @@ function getCurrentCoordinates() {
           getWeatherData(lat, lon);
         })
     },
-    (error) => {
-      showError(error.message);
+    () => {
+      // showError(error.message);
+      showError('Geolocation is not supported by this browser.');
     }
     );
 }
