@@ -76,18 +76,20 @@ function initAutocomplete() {
 }
 
 function getAutocompletePlace() {
-  try {
-    let place = autocomplete.getPlace();
-    fullLocationName = place.formatted_address;
-    area = place.name;
-    lat = place.geometry.location.lat();
-    lon = place.geometry.location.lng();       
-    getWeatherData(lat, lon);
+  setTimeout(() =>{
+    try {
+      let place = autocomplete.getPlace();
+      fullLocationName = place.formatted_address;
+      area = place.name;
+      lat = place.geometry.location.lat();
+      lon = place.geometry.location.lng();       
+      getWeatherData(lat, lon);
 
-  } 
-  catch(error) {
-    getCoordinates();
-  } 
+    } 
+    catch(error) {
+      getCoordinates();
+    }
+  }, 200)
 }
 
 function getCoordinates() {
@@ -200,7 +202,7 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
     <h5 id="current-temp">${currentTemp} &deg;C</h5>
     <h5 id="realfeel">Real feel ${feelLike} &deg;C</h5>
     <h5 class="weather-description">${description[0].toUpperCase() + description.slice(1)}</h5>
-    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="big icon">    
+    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon">    
   `; 
   currentData2.innerHTML = `
     <h3>MORE DETAILS</h3>
