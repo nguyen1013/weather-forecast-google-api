@@ -84,6 +84,7 @@ function getAutocompletePlace() {
       lat = place.geometry.location.lat();
       lon = place.geometry.location.lng();       
       getWeatherData(lat, lon);
+      console.log(place);
 
     } 
     catch(error) {
@@ -92,6 +93,7 @@ function getAutocompletePlace() {
   }, 200)
 }
 
+// Use this function incase getAutocompletePlace() catch error
 function getCoordinates() {
   if (locationInput.value) {
     const locationName = locationInput.value.trim();

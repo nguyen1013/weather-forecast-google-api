@@ -106,6 +106,7 @@ button {
 /* Input section */
 #input-section {
   min-height: 80px;
+  padding-top: 20px;
   /* width: 100%; */
 }
 
