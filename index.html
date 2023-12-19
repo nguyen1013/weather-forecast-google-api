@@ -7,162 +7,171 @@
   <link href="weather.css" rel="stylesheet">
 </head>
 <body>
-  <header><h1>Weather forecast Project</h1></header> 
+  <header>
+    <h1>Weather forecast Project</h1>
+  </header> 
 
-  <main>
-    
-    <section class="main-section">
-      <form action="check.html" method="GET" id="input-section" onSubmit="return false;">
-        <label for="location-input">Input an area:</label>   
-        <div class="contain-input">               
-          <input type="text" id="location-input" name="location-input" placeholder="E.g., Vaasa, Turku" required>
-          <button type="button" id="current-location"><img src="./img/current-location.png" alt="icon" id="current-location-icon"></button>
-        </div>
-        <input type="button" id="search-btn" value="Search">
-      </form>
+  <main>    
+    <div class="main">
+      <br>
+      <div class="input">
+        <form action="check.html" method="GET" class="input-form" onSubmit="return false;">
+          <label for="input-text">Input an area:</label>   
+          <div class="input__field">               
+            <input type="text" id="input-text" name="input-text" placeholder="E.g., Vaasa, Turku" required>
+            <button type="button" class="btn" id="current-location-btn"><img src="./img/current-location.png" alt="weather icon"></button>
+            <h3 class="popup" id="popup-alert"></h3>
+          </div>
+          <div class="input__search-btn">
+            <input type="button" class="btn" id="search-btn" value="Search">
+          </div>
+        </form>        
+      </div>
+      <br>
+      <div class="location-info">  
+        <p id="detail-location-info">Helsinki - Finland</p>
+        <br>
+      </div>
 
-      <h3 class="popup" id="popup-alert"></h3>
-  
-      <p id="location-info">Helsinki - Finland</p>
-      
-      <section class="today-section">
-        <section class="current-data">
-          <section id="current-data-1">
-            <h3>date</h3>
-            <h5 id="current-temp">&deg;C</h5>
-            <h5 id="realfeel">Real feel &deg;C</h5>
-            <h5 class="weather-description"></h5>
-            <img src="" alt="weather icon">   
-          </section> 
-
-          <section id="current-data-2">
+      <div class="today">      
+        <section class="today__current">
+          <div id="current-data-1">
+            <h2>Sun Dec 17 2023</h2>
+            <h5 id="current-temp">5&deg;C</h5>
+            <h5 id="realfeel">Real feel 8&deg;C</h5>
+            <h5 class="weather-description">Light rain</h5>
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">   
+          </div> 
+          <div id="current-data-2">
             <h3>MORE DETAILS</h3>
+            <h2>12:00</h2>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
             <h5>Sunrise  &nbsp; &nbsp; Sunset </h5>
-            <h5></h5>
-          </section>
+            <h5>Expect a day of partly cloudy with rain</h5>
+          </div>
         </section>
 
-        <section id="hours-forecast-section"> 
-          <section id="background-hour-cards"></section>
-          <ul id="hours-forecast-list">
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+        <div class="today__hours-forecast"> 
+          <section id="hour-forecast-background"></section>
+          <ul class="today__hours-forecast--list">
+            <li class="today__hours-forecast--card">
+              <h3>0:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>   
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+            <li class="today__hours-forecast--card">
+              <h3>3:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+            <li class="today__hours-forecast--card">
+              <h3>6:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+            <li class="today__hours-forecast--card">
+              <h3>9:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+            <li class="today__hours-forecast--card">
+              <h3>12:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>
-            <li class="hourly-card">
-              <h3></h3>
-              <img src="" alt="weather-icon">
-              <h3>&deg;C</h3>
+            <li class="today__hours-forecast--card">
+              <h3>15:00</h3>
+              <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+              <h3>5&deg;C</h3>
             </li>
           </ul>        
-        </section>
-      </section> 
+        </div>
+      </div>
 
-      <h2 id="seven-days-label">&nbsp;7-days Forecast Weather</h2>
+      <h2 id="seven-days-label">&nbsp;7-days Weather Forecast</h2>
       <hr>
-      <section>    
-        <ul id="days-forecast-list">
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+      <div class="next-7-days">    
+        <ul class="next-7-days__list">
+          <li class="next-7-days__daily-card">
+            <h2>Mon Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Tue Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Wed Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Thu Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Fri Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Sat Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
-          <li class="daily-card">
-            <h2></h2>
-            <h5></h5>
+          <li class="next-7-days__daily-card">
+            <h2>Mon Dec 18 2023</h2>
+            <h5>Overcast clouds</h5>
             <h5>Min temp &degC</h5>
             <h5>Max temp &degC</h5>
             <h5>Humidity %</h5>
-            <img src="" alt="weather icon">
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
             <h5>Sunrise  &nbsp Sunset </h5>
           </li>
         </ul>
-      </section>
-    </section>
-
-    <p style="font-style: italic; text-align: right; padding-right: 10px;">Image credit: wikimedia.org</p>
+      </div>      
+    </div>   
     
+    <p class="main__img-source">Image credit: wikimedia.org</p>
   </main>
   
   <footer>Vaasa University of Applied Sciences - IT2023B<br>Made by Nguyen Nguyen - Nguyen Lien</footer>
   
   <script src="weather-forecast.js"></script>
 
-  <script script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuUoVEE1o4gqcNh5vrfJ13S6Pm102vj2U&libraries=places&callback=initAutocomplete" asyncasync defer>
-</script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuUoVEE1o4gqcNh5vrfJ13S6Pm102vj2U&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+
 
 </body>
 </html>

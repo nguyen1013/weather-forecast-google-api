@@ -1,15 +1,24 @@
+/* 
+--1--General
+--2--Input section
+--3--Display city and country
+--4--Display today's weather
+--5--7 days forecast weather
+--6--Utilities
+*/
+
 /* Import Google fonts:*/
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
   /* @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&family=Noto+Sans+Mono&family=Work+Sans&display=swap'); */
 
-
-  @font-face {
+@font-face {
     font-family: 'Merriweather';
     src: url('fonts/merriweather-regular-webfont.woff2') format('woff2'),
     url('fonts/merriweather-regular-webfont.woff') format('woff'),
     url('fonts/Merriweather-Regular.ttf') format('truetype');
-  }
+}
 
+/* --1--General*/
 * {
   padding: 0;
   box-sizing: border-box;
@@ -17,43 +26,43 @@
   font-family: 'Merriweather', serif;
   margin: auto;
   line-height: 1.5;
-  color: black;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   position: relative;
+  font-size: 16px;
 }
 
 body {
-  font-size: 16px;
+  height: 100vh;
 }
 
 header {
   min-height: 50px;
   background-color: chocolate;
-  top: 0;
   position: sticky;
+  top: 0;
   z-index: 1;
   width: 100%;
-  overflow: visible;
 }
 
-footer {
+footer {  
   min-height: 50px;
   color: bisque;
   background-color: rgb(14, 14, 61);
   position: absolute;
   width: 100%;
-}
+  }
 
 main {
   min-height: calc(100vh - 100px);
+  margin: 0;
 }
 
+/* Make opacity background for whole page */
 main::before {
   content: '';
   display: block;
   position: absolute;
-  /* top: 0; */
   width: 100%;
   height: 100%;
   opacity: 0.6;
@@ -61,150 +70,227 @@ main::before {
   background-size: cover;
 }
 
+/* Typography*/
 h1 {
-  font-size: 30px;
+  font-size: 28px;
 }
 
 h2 {
   font-size: 20px;  
-  text-align: left;
+  color: #111;
+  font-weight: 500;
 }
 
-h5 {
-  font-size: 16px;
-  text-align: left;
+#current-data-2 h2 {
+  font-size: 24px;
 }
 
-#current-data-2 h3 {
-  text-align: left;
+h3 {
+  font-size: 18px;
 }
 
 li {
-  list-style: none;  
+  list-style: none;
 }
 
-ul, 
-.main-showing, 
-.current-data, 
-.today-section {
+/* --2--Input section */
+.input-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  max-width: 865px;
+  row-gap: 5px;
 }
 
-label, 
-input, 
-button {
-  font-size: 20px;  
-  margin: 10px auto;
-  height: 50px;
-  border: none;
-  /* vertical-align: middle; */
-  border-radius: 0;
+label {
+  width: 150px;
+  margin: 0;
+  font-size: 18px;
 }
 
-/* Input section */
-#input-section {
-  min-height: 80px;
-  padding-top: 20px;
-  /* width: 100%; */
+.input__field {
+  margin: 0;
+  flex-grow: 1;
+  max-width: 500px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.contain-input {
-  display: inline-block;
+.input__search-btn {
+  width: 180px;
+  margin-top: 0;
 }
 
-#location-input {
-  font-size: 16px;
-  padding-left: 5px;
-  margin-right: 50px;
-  width: 220px;
+#input-text {
+  flex-grow: 1;
+  height: 45px;
   text-align: left;
+  padding-left: 5px;
+  margin-right: 45px;
 }
 
-#location-input:hover, 
-#location-input:focus {
+#input-text:hover, 
+#input-text:focus {
+  background-color: rgba(245, 245, 245, 0.863);
+}
+
+#input-text:hover, 
+#input-text:focus {
   background-color: rgba(245, 245, 245, 0.863);
 }
 
 #current-location-icon {
-  height: 30px;
   width: auto;  
   background-color: none;
 }
 
-button#current-location {
+.btn {
+  height: 42px;
   background-color: rgb(250, 234, 87);
   border: 2px solid rgb(226, 211, 78);
   border-radius: 5px;
   box-shadow: 0px 3px darkgoldenrod;
-  width: 50px;
-  position: absolute;
-  right: 0;
-  top: 0;
   cursor:pointer;
 }
-button#current-location:hover {
+
+.btn:hover {
   background-color: rgb(228, 167, 15);
   transition: background-color .15s;
   border: darkgoldenrod;
 }
 
-button#current-location:active { 
+.btn:active { 
   background: darkkhaki;  
   transition: background-color .15s;
-  margin-top: 13px;
+  margin-top: 3px;
   box-shadow: 0 0;
   opacity: 0.6;
 }
 
-/* Tooltip */
-button#current-location:hover::after {
-  content: 'Use current location';
-  background-color: lightgoldenrodyellow;
+#current-location-btn {
+  width: 45px;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  right: -50px;
-  top: 52px;
-  z-index: 1;
-  font-size: 16px;
-  width: 180px;
-  border: 5px;
+  right: 0;
+  top: 0;
 }
 
 #search-btn {
   width: 150px;
-  margin-left: 10px;
-  cursor: pointer;
-  background-color: rgb(250, 234, 87);
   color: darkblue;
-  border: 2px solid rgb(226, 211, 78);
   font-size: 18px;
-  box-shadow: 0px 3px darkgoldenrod;
-  border-radius: 5px;
-  position: relative;
-  display: inline-block;
-  bottom: 1px;
 }
 
 #search-btn:hover {
-  background-color: rgb(228, 167, 15);
-  transition: background-color .15s, font-size .15s;
-  font-size: 19px;
+  font-size: 20px;
   border: darkgoldenrod;
 }
 
-#search-btn:active { 
-  background: darkkhaki;  
-  font-size: 18px;
-  border-color: rgb(156, 116, 15);
-  box-shadow: 0 0;
-  opacity: 0.6;
-  bottom: -2px;
+/* --3--Display city and country */
+#detail-location-info {
+  font-size: 28px;
+  min-height: 60px;
+  width: 100%;
 }
 
-/* Pop-up failed to get coordinates */
+/* --4--Display today's weather */
+.today {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 90%;
+}
+
+.today__current {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+#current-data-1, 
+#current-data-2 {
+  width: 250px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+
+#current-data-1 *,
+#current-data-2 * {
+  text-align: left;
+}
+
+
+#current-temp {
+  font-size: 48px;
+}
+
+/* 3 hours forecast */
+.today__hours-forecast {
+  max-width: 900px;
+  margin-top: 0;
+}
+
+.today__hours-forecast--list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.today__hours-forecast--card {    
+  margin: 0;
+  width: 150px;
+  height: 200px;
+  padding-top: 5px;
+}
+
+/* create background of 3 hours forecast */
+#hour-forecast-background  {
+  background: linear-gradient(-45deg, #da9d75, #35577D);
+  opacity: 0.8;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+/* --5--7 days forecast weather */
+#seven-days-label {
+  min-height: 50px;
+  font-size: 24px;
+  font-weight: 500;
+  display: block;
+  text-align: left;
+  padding-top: 20px;
+  width: 85%;
+}
+
+.next-7-days__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 5px;
+  width: 90%;
+}
+
+.next-7-days__daily-card {
+  width: 225px;
+  height: 270px;
+  margin: 10px 0;
+}
+
+.next-7-days__daily-card * {
+  text-align: left;
+}
+
+/* --6--Utilities */
+/* Pop-up in case failed to get coordinates */
 .popup {
   display: none;
   position:fixed;
@@ -230,77 +316,24 @@ button#current-location:hover::after {
   z-index: 2;
 }
 
-/* Display city and country */
-p#location-info {
-  font-size: 30px;
-  min-height: 60px;
-  width: 100%;
-}
-
-/* Display today's weather */
-.today-section {
-  width: 80%;
-  margin: 10px auto;
-}
-
-#current-data-1, 
-#current-data-2 {
-  height: 250px; 
-  margin: auto 20px;
-}
-
-#current-data-2 {
-  width: 250px;
-  text-align: left;
-}
-
-#current-temp {
-  font-size: 48px;
-}
-
-/* 3 hours forecast */
-#hours-forecast-section {
-  margin-top: 0;
-}
-
-/* create background of 3 hours forecast */
-#background-hour-cards  {
-  background: linear-gradient(-45deg, #da9d75, #35577D);
-  opacity: 0.8;
+/* Tooltip */
+#current-location-btn:hover::after {
+  content: 'Use current location';
+  background-color: lightgoldenrodyellow;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  right: 35px;
+  top: -20px;
+  z-index: 1;
+  font-size: 16px;
+  width: 180px;
+  border: 5px;
 }
 
-li.hourly-card {
-  margin-bottom: 10px;
-  width: 150px;  
-}
-
-#hours-forecast-list {
-  min-height: 230px; 
-  padding: 10px 0;
-  font-size: 18px;
-}
-
-
-/* 7 days forecast weather */
-#seven-days-label {
-  min-height: 50px;
-  font-size: 30px;
-  display: block;
-  padding-top: 10px;
-  width: 95%;
-}
-
-ul#days-forecast-list {
-  width: 95%;
-  margin-top: 20px;
-}
-
-.daily-card {
-  margin: 20px auto;
-  height: 260px;
-  width: 230px;
+/* background image source */
+.main__img-source {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  font-style: italic; 
+  opacity: 0.8;
 }

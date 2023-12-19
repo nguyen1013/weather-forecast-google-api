@@ -1,14 +1,13 @@
-// Create global variableslocation-inputconst searchButton = document.getElementById('search-btn');
-const locationInput = document.getElementById('location-input');
-const currentLocationButton = document.getElementById('current-location');
+// Create global variables
+const locationInput = document.getElementById('input-text');
+const currentLocationButton = document.getElementById('current-location-btn');
 const searchButton = document.getElementById('search-btn');
-const APIkey = 'da9b4f091bfe1c04a8d6296cc9f2cbe4';
+const APIkey = 'da9b4f091bfe1c04a8d6296cc9f2cbe4';//Openweathermap OnceCall API
 const days = [];// array of 8 days from current day to next 7 days
 let weatherData;
 
 const popup = document.getElementById('popup-alert');
-const overlay = document.createElement('div');
-
+const overlay = document.createElement('div');//overlay background for popup
 
 // Object constructor for daily weather
 function ForecastWeatherObj(date, description, minTemp, maxTemp, humidity, icon, sunrise, sunset) {
@@ -84,8 +83,6 @@ function getAutocompletePlace() {
       lat = place.geometry.location.lat();
       lon = place.geometry.location.lng();       
       getWeatherData(lat, lon);
-      console.log(place);
-
     } 
     catch(error) {
       getCoordinates();
@@ -93,15 +90,16 @@ function getAutocompletePlace() {
   }, 200)
 }
 
-// Use this function incase getAutocompletePlace() catch error
+// Use this function in case getAutocompletePlace() catch error or mannual input
 function getCoordinates() {
   if (locationInput.value) {
     const locationName = locationInput.value.trim();
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${locationName}&limit=5&appid=${APIkey}`)
       .then(response => response.json())
       .then(data => {
-        if (data.length === 0) {          
-          showError(`No coordinates found for <b>${locationName}</b>`); 
+        if (data.length === 0) {      
+          let errorMessage = `No coordinates found for ${locationName}`;    
+          showError(errorMessage); 
         } else {        
         lat = data[0].lat;
         lon = data[0].lon;
@@ -129,7 +127,6 @@ function getCurrentCoordinates() {
         })
     },
     () => {
-      // showError(error.message);
       showError('Geolocation is not supported by this browser.');
     }
     );
@@ -145,7 +142,7 @@ function getWeatherData(lat, lon) {
 }
 
 function getWeatherDetail() {     
-    const sevenDaysForecastSection = document.getElementById('days-forecast-list');
+    const sevenDaysForecastSection = document.querySelector('.next-7-days__list');
     sevenDaysForecastSection.innerHTML = '';
     let out = '';
     for (let i = 0; i <= 7; i++) {
@@ -171,36 +168,24 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
   let feelLike = weatherData.current.feels_like;
   let summary = weatherData.daily[0].summary; 
 
-  const hourlyData = [];
-  const showLocationInfo = document.getElementById('location-info');
+  const showLocationInfo = document.getElementById('detail-location-info');
   showLocationInfo.innerHTML = '';
   const currentData1 = document.getElementById('current-data-1');
   const currentData2 = document.getElementById('current-data-2');
   currentData1.innerHTML = '';
   currentData2.innerHTML = '';  
-  const hourlyForecastSection = document.getElementById('hours-forecast-list');
+  const hourlyForecastSection = document.querySelector('.today__hours-forecast--list');
   hourlyForecastSection.innerHTML = '';
   showLocationInfo.innerHTML = `${fullLocationName}`;
   let out = '';    
   let hour = (new Date()).getHours();
-  let minute = (new Date()).getMinutes();
-  // create next 3-hours cards
-  for (let i = 1; i <= 6; i ++) {    
-    hour = (hour + 3) % 24;
-    let temp = weatherData.hourly[i].temp;
-    let hourlyIcon = weatherData.hourly[i].weather[0].icon;
-    hourlyData.push(new HourlyDataObj(hourlyIcon, temp, hour, minute));
-    out += `    
-      <li class="hourly-card">
-        <h3>${hour}:${minute}</h3>
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon">
-        <h3>${temp} &deg;C</h3>
-      </li>
-    `;
-    hourlyForecastSection.innerHTML = out;
+  let minute = (new Date()).getMinutes(); 
+  if (minute < 10) {
+    minute = `0${minute}`;
   }
+  // Show current data 
   currentData1.innerHTML = `
-    <h3>${days[0]}</h3>
+    <h2>${days[0]}</h2>    
     <h5 id="current-temp">${currentTemp} &deg;C</h5>
     <h5 id="realfeel">Real feel ${feelLike} &deg;C</h5>
     <h5 class="weather-description">${description[0].toUpperCase() + description.slice(1)}</h5>
@@ -208,17 +193,35 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
   `; 
   currentData2.innerHTML = `
     <h3>MORE DETAILS</h3>
+    <h2>${hour}:${minute}</h2>
     <h5>Min temp ${minTemp}&degC</h5>
     <h5>Max temp ${maxTemp}&degC</h5>
     <h5>Humidity ${humidity}%</h5>
     <h5>Sunrise ${sunrise} &nbsp; &nbsp; Sunset ${sunset}</h5>
     <h5>${summary}</h5>
-  `;  
+  `;
+
+  // create next 3-hours cards
+  const hourlyData = [];
+  for (let i = 1; i <= 6; i ++) {    
+    hour = (hour + 3) % 24;
+    let temp = weatherData.hourly[i].temp;
+    let hourlyIcon = weatherData.hourly[i].weather[0].icon;
+    hourlyData.push(new HourlyDataObj(hourlyIcon, temp, hour, minute));
+    out += `    
+      <li class="today__hours-forecast--card">
+        <h3>${hour}:${minute}</h3>
+        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon">
+        <h3>${temp} &deg;C</h3>
+      </li>
+    `;
+    hourlyForecastSection.innerHTML = out;
+  }  
 }
 
 function createDayForecastCard(date, description, minTemp, maxTemp, humidity, icon, sunrise, sunset) {
   return  `
-    <li class="daily-card">
+    <li class="next-7-days__daily-card">
       <h2>${date}</h2>
       <h5>${description[0].toUpperCase() + description.slice(1)}</h5>
       <h5>Min temp ${minTemp}&degC</h5>
@@ -231,7 +234,7 @@ function createDayForecastCard(date, description, minTemp, maxTemp, humidity, ic
 
 // Display information of error due to unsatisfied input
 function showError(errorMessage) {  
-  popup.innerHTML = `${errorMessage}`;
+  popup.innerHTML = errorMessage;
   popup.style.display = 'block';
 
   overlay.className = 'overlay';
