@@ -11,12 +11,14 @@
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
   /* @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&family=Noto+Sans+Mono&family=Work+Sans&display=swap'); */
 
-@font-face {
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+/* @font-face {
     font-family: 'Merriweather';
     src: url('fonts/merriweather-regular-webfont.woff2') format('woff2'),
     url('fonts/merriweather-regular-webfont.woff') format('woff'),
     url('fonts/Merriweather-Regular.ttf') format('truetype');
-}
+} */
 
 /* --1--General*/
 * {
@@ -29,7 +31,6 @@
   font-weight: 400;
   text-align: center;
   position: relative;
-  font-size: 16px;
 }
 
 body {
@@ -71,22 +72,31 @@ main::before {
 }
 
 /* Typography*/
+html {
+  font-size: 16px;
+}
+
 h1 {
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 
 h2 {
-  font-size: 20px;  
+  font-size: 1.25rem;  
   color: #111;
   font-weight: 500;
 }
 
+/* Big clock time current */
 #current-data-2 h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1rem;
 }
 
 li {
@@ -94,7 +104,11 @@ li {
 }
 
 /* --2--Input section */
-.input-form {
+.input {
+  margin-bottom: 1.25rem;
+}
+
+.input__form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -102,12 +116,13 @@ li {
   align-items: center;
   max-width: 865px;
   row-gap: 5px;
+  width: 90%;
 }
 
 label {
-  width: 150px;
+  width: 140px;
   margin: 0;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .input__field {
@@ -142,7 +157,6 @@ label {
 }
 
 #current-location-icon {
-  width: auto;  
   background-color: none;
 }
 
@@ -179,7 +193,7 @@ label {
 #search-btn {
   width: 150px;
   color: darkblue;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 #search-btn:hover {
@@ -189,9 +203,10 @@ label {
 
 /* --3--Display city and country */
 #detail-location-info {
-  font-size: 28px;
+  font-size: 1.625rem;
   min-height: 60px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 /* --4--Display today's weather */
@@ -199,21 +214,21 @@ label {
   display: flex;
   flex-wrap: wrap;
   max-width: 1400px;
-  width: 90%;
+  width: 90%; 
 }
 
 .today__current {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 600px;
+  max-width: 550px;
   align-items: flex-start;
   margin-bottom: 20px;
 }
 
 #current-data-1, 
 #current-data-2 {
-  width: 250px;
+  width: 225px;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
@@ -227,10 +242,15 @@ label {
 
 
 #current-temp {
-  font-size: 48px;
+  font-size: 2.8rem;
 }
 
 /* 3 hours forecast */
+.today__hours {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 .today__hours-forecast {
   max-width: 900px;
   margin-top: 0;
@@ -245,8 +265,8 @@ label {
 .today__hours-forecast--card {    
   margin: 0;
   width: 150px;
-  height: 200px;
-  padding-top: 5px;
+  height: 230px;
+  padding-top: 20px;
 }
 
 /* create background of 3 hours forecast */
@@ -262,12 +282,11 @@ label {
 
 /* --5--7 days forecast weather */
 #seven-days-label {
-  min-height: 50px;
-  font-size: 24px;
+  height: 36px;
+  font-size: 1.5rem;
   font-weight: 500;
   display: block;
   text-align: left;
-  padding-top: 20px;
   width: 85%;
 }
 
@@ -298,7 +317,7 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Tahoma, sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   padding: 20px 30px;
   background-color: whitesmoke;
   z-index: 3;
@@ -324,7 +343,7 @@ label {
   right: 35px;
   top: -20px;
   z-index: 1;
-  font-size: 16px;
+  font-size: 1rem;
   width: 180px;
   border: 5px;
 }
@@ -336,4 +355,57 @@ label {
   bottom: 0;
   font-style: italic; 
   opacity: 0.8;
+}
+
+#current-data-1 img {
+  padding: 0;
+}
+
+.big-icon {
+  width: 150px;
+  height: 150px;
+  margin-right: 20%;
+}
+
+.big-icon img {  
+  width: 100%;
+  object-fit: none; 
+}
+
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .input__field {
+    min-width: 350px;
+  }
+
+  #current-data-1 {
+    width: 160px;
+  }
+
+  #current-data-2 {
+    width: 200px;
+  }
+
+  .today__hours {
+    width: 100%;
+  }
+
+  .next-7-days__list {
+    column-gap: 5px;
+    width: 95%;
+    justify-content: center;
+  }
+
+  .next-7-days__daily-card {
+    width: 190px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .input__field {
+    min-width: 250px;
+  }
 }

@@ -189,7 +189,9 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
     <h5 id="current-temp">${currentTemp} &deg;C</h5>
     <h5 id="realfeel">Real feel ${feelLike} &deg;C</h5>
     <h5 class="weather-description">${description[0].toUpperCase() + description.slice(1)}</h5>
-    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon">    
+    <div class="big-icon">
+      <img src="https://openweathermap.org/img/wn/${icon}@4x.png" alt="weather icon">
+    </div>   
   `; 
   currentData2.innerHTML = `
     <h3>MORE DETAILS</h3>
@@ -198,7 +200,7 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
     <h5>Max temp ${maxTemp}&degC</h5>
     <h5>Humidity ${humidity}%</h5>
     <h5>Sunrise ${sunrise} &nbsp; &nbsp; Sunset ${sunset}</h5>
-    <h5>${summary}</h5>
+    <h5><i> ${summary} </i></h5>
   `;
 
   // create next 3-hours cards
@@ -252,7 +254,7 @@ function showError(errorMessage) {
   });
 }
 
-getWeatherData(lat, lon);// Set default weather forecast for Helsinki area
+// getWeatherData(lat, lon);// Set default weather forecast for Helsinki area
 
 // Double click to clear previous suggestions
 locationInput.addEventListener('dblclick',() => {

@@ -14,7 +14,7 @@
   <main>    
       <br>
       <div class="input">
-        <form action="check.html" method="GET" class="input-form" onSubmit="return false;">
+        <form action="check.html" method="GET" class="input__form" onSubmit="return false;">
           <label for="input-text">Input an area:</label>   
           <div class="input__field">               
             <input type="text" id="input-text" name="input-text" placeholder="E.g., Vaasa, Turku" required>
@@ -26,10 +26,8 @@
           </div>
         </form>        
       </div>
-      <br>
       <div class="location-info">  
         <p id="detail-location-info">Helsinki - Finland</p>
-        <br>
       </div>
 
       <div class="today">      
@@ -39,7 +37,9 @@
             <h5 id="current-temp">5&deg;C</h5>
             <h5 id="realfeel">Real feel 8&deg;C</h5>
             <h5 class="weather-description">Light rain</h5>
-            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">   
+            <div class="big-icon">
+              <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="weather icon">
+            </div>   
           </div> 
           <div id="current-data-2">
             <h3>MORE DETAILS</h3>
@@ -52,7 +52,8 @@
           </div>
         </div>
 
-        <div class="today__hours-forecast"> 
+        <div class="today__hours">
+         <div class="today__hours-forecast"> 
           <div id="hour-forecast-background"></div>
           <ul class="today__hours-forecast--list">
             <li class="today__hours-forecast--card">
@@ -86,6 +87,7 @@
               <h3>5&deg;C</h3>
             </li>
           </ul>        
+          </div>
         </div>
       </div>
 
