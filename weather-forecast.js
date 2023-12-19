@@ -183,7 +183,7 @@ function showTodayData(description, minTemp, maxTemp, humidity, icon, sunrise, s
   if (minute < 10) {
     minute = `0${minute}`;
   }
-  // Show current data 
+  // Show current weather data 
   currentData1.innerHTML = `
     <h2>${days[0]}</h2>    
     <h5 id="current-temp">${currentTemp} &deg;C</h5>
