@@ -389,10 +389,6 @@ label {
     width: 200px;
   }
 
-  .today__hours {
-    width: 100%;
-  }
-
   .next-7-days__list {
     column-gap: 5px;
     width: 95%;
