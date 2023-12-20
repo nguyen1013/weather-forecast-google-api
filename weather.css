@@ -91,6 +91,10 @@ h2 {
   font-size: 1.5rem;
 }
 
+.italic {
+  font-style: italic;
+}
+
 h3 {
   font-size: 1.125rem;
 }
@@ -288,6 +292,7 @@ label {
   display: block;
   text-align: left;
   width: 85%;
+  max-width: 1600px;
 }
 
 .next-7-days__list {
@@ -372,7 +377,7 @@ label {
   object-fit: none; 
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 510px) {
   html {
     font-size: 14px;
   }
