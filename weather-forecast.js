@@ -1,25 +1,14 @@
+"use strict";
 // Create global variables
 const locationInput = document.getElementById('input-text');
 const currentLocationButton = document.getElementById('current-location-btn');
 const searchButton = document.getElementById('search-btn');
-const APIkey = 'da9b4f091bfe1c04a8d6296cc9f2cbe4';//Openweathermap OnceCall API
+const APIkey = 'ONCE-CALL-OPENWEATHERMAP-API';//Openweathermap OnceCall API
 const days = [];// array of 8 days from current day to next 7 days
 let weatherData;
 
 const popup = document.getElementById('popup-alert');
 const overlay = document.createElement('div');//overlay background for popup
-
-// Object constructor for daily weather
-function ForecastWeatherObj(date, description, minTemp, maxTemp, humidity, icon, sunrise, sunset) {
-  this.date = date,
-  this.description = description,
-  this.minTemp = minTemp,
-  this.maxTemp = maxTemp,
-  this.humidity = humidity,
-  this.icon = icon,
-  this.sunrise = sunrise,
-  this.sunset = sunset
-}
 
 // Object constructor for 3 hours forecast
 function HourlyDataObj(icon, temp, hour, minute) {
