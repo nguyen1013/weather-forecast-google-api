@@ -3,7 +3,7 @@
 const locationInput = document.getElementById('input-text');
 const currentLocationButton = document.getElementById('current-location-btn');
 const searchButton = document.getElementById('search-btn');
-const APIkey = 'ONCE-CALL-OPENWEATHERMAP-API';//Openweathermap OnceCall API
+const APIkey = 'ONCE-CALL-OPENWEATHERMAP-API'; //Openweathermap OnceCall API
 const days = [];// array of 8 days from current day to next 7 days
 let weatherData;
 
